@@ -35,11 +35,8 @@ export async function generateMetadata(
 }
  
 export default async function DetailProductPage(
-  {
-  params
-}:{
-  params: Promise<{id: number}>
-}) {
+  { params, searchParams }: Props
+  ) {
   const {id} = await params;
   return (
     <div>

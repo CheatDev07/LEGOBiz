@@ -1,4 +1,5 @@
 
+'use server'
 import ProductDetailListComponent from "@/components/products/ProductDetailListComponent";
 import { error } from "console";
 
@@ -10,9 +11,13 @@ type Props = {
 }
 
 async function getProductById(id: number) {
-  const res = await fetch(`${process.env.FAKESTORE_API}/products/${id}`);
+   try{
+    const res = await fetch(`${process.env.FAKESTORE_API}/products/${id}`);
   if (!res.ok) return null;
   return res.json();
+   } catch(error){
+    console.log(error)
+   }
 }
  
 // dynamic metadata & opengraph 

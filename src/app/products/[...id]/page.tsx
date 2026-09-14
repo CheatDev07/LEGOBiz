@@ -8,6 +8,12 @@ type Props = {
   params: Promise<{ id: number }>
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
+
+async function getProductById(id: number) {
+  const res = await fetch(`${process.env.FAKESTORE_API}/products/${id}`);
+  if (!res.ok) return null;
+  return res.json();
+}
  
 // dynamic metadata & opengraph 
 export async function generateMetadata(
@@ -18,9 +24,7 @@ export async function generateMetadata(
   const { id } = await params;
  
   // fetch data
-  const response = await fetch(`${process.env.FAKESTORE_API}/products/${id}`);
-  const product = await response.json();
-  console.log(`===> product: `, product);
+  const product = await getProductById(id);
 
  
   // optionally access and extend (rather than replace) parent metadata

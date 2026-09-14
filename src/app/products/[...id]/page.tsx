@@ -1,7 +1,7 @@
 
-'use server'
+
 import ProductDetailListComponent from "@/components/products/ProductDetailListComponent";
-import { error } from "console";
+
 
 import type { Metadata, ResolvingMetadata } from 'next'
  

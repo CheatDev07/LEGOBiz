@@ -18,9 +18,10 @@ export async function generateMetadata(
   const { id } = await params;
  
   // fetch data
-  const product = await fetch(`https://fakestoreapi.com/products/${id}`)
-  .then((res) => res.json())
-  .catch((error)=> console.log(error))
+  const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+  const product = await response.json();
+  console.log(`===> product: `, product);
+
  
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || []

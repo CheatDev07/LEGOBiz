@@ -7,7 +7,7 @@ import type { Metadata, ResolvingMetadata } from 'next'
  
 type Props = {
   params: Promise<{ id: number }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+ 
 }
 
 async function getProductById(id: number) {
@@ -22,7 +22,7 @@ async function getProductById(id: number) {
  
 // dynamic metadata & opengraph 
 export async function generateMetadata(
-  { params, searchParams }: Props,
+  { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // read route params
@@ -47,7 +47,7 @@ export async function generateMetadata(
 }
  
 export default async function DetailProductPage(
-  { params, searchParams }: Props
+  { params }: Props
   ) {
   const {id} = await params;
   return (

@@ -1,5 +1,6 @@
 
 import ProductDetailListComponent from "@/components/products/ProductDetailListComponent";
+import { error } from "console";
 
 import type { Metadata, ResolvingMetadata } from 'next'
  
@@ -19,6 +20,7 @@ export async function generateMetadata(
   // fetch data
   const product = await fetch(`https://fakestoreapi.com/products/${id}`)
   .then((res) => res.json())
+  .catch((error)=> console.log(error))
  
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || []
